@@ -1,0 +1,30 @@
+---
+title: "EDC MACS205"
+author: "Shangyuan Zhang"
+output: html_notebook
+---
+#2. Génération des données et fonctions préliminaires
+
+##2.1
+```{r}
+densite = function(x){
+  return(dbeta(x, 1.7, 5.1)) 
+}
+
+#test
+xx = seq(0,1,length.out = 1000)
+yy = densite(xx)
+plot(xx,yy, xlab = 'x',ylab = "density", main = "Gamma distribution")
+```
+
+##2.2
+
+Lorsque $$N_{\omega} \rightarrow \infty$$,
+
+on a $$\hat{\phi}_{(1.7,5.1)}^{\infty}(x) = 2^8 \int_{k(x)2^{-8}}^{(k(x)+1)2^{-8}} \phi_{1.7,5.7}(u)du$$
+
+
+
+
+
+
