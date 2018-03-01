@@ -3,7 +3,7 @@ title: "EDC MACS205"
 author: "Shangyuan Zhang"
 output: html_notebook
 ---
-#2. Génération des données et fonctions préliminaires
+#2 Génération des données et fonctions préliminaires
 
 ##2.1
 ```{r}
@@ -19,12 +19,60 @@ plot(xx,yy, xlab = 'x',ylab = "density", main = "Gamma distribution")
 
 ##2.2
 
-Lorsque $$N_{\omega} \rightarrow \infty$$,
+Lorsque $$N_{\omega} \rightarrow \infty$$
+on a $$\hat{\phi}_{1.7,5.1}^{\infty}(x) = 2^8 \int_{k(x)2^{-8}}^{(k(x)+1)2^{-8}} \phi_{1.7,5.7}(u)du$$
 
-on a $$\hat{\phi}_{(1.7,5.1)}^{\infty}(x) = 2^8 \int_{k(x)2^{-8}}^{(k(x)+1)2^{-8}} \phi_{1.7,5.7}(u)du$$
+##2.3
+
+On a $$\hat{\phi}_{1.7,5.1}^{\infty}(x) - \phi_{1.7, 5.1}(x)$$
 
 
+```{r}
+source("ini_functions.R")
+source("ini.R")
+
+```
+##2.4
+La fonction *hist_value* renvoie la valeur de la fonction de densité au point x.
+
+#3 Interpolation polynomiale
+
+##3.1
+```{r}
+source("myTP.R")
+
+interpolLagrange(9,2^-8,1-2^-8,1000,'equi',densite,TRUE)
+interpolLagrange(19,2^-8,1-2^-8,1000,'equi',densite,TRUE)
+interpolLagrange(29,2^-8,1-2^-8,1000,'equi',densite,TRUE)
+interpolLagrange(39,2^-8,1-2^-8,1000,'equi',densite,TRUE)
+interpolLagrange(49,2^-8,1-2^-8,1000,'equi',densite,TRUE)
+```
+On peut observer le phénomène de runge a partir de 40 degrés.
 
 
+###3.2
+
+```{r}
+interpolLagrange(9,2^-8,1-2^-8,1000,'cheby',densite,TRUE)
+interpolLagrange(19,2^-8,1-2^-8,1000,'cheby',densite,TRUE)
+interpolLagrange(29,2^-8,1-2^-8,1000,'cheby',densite,TRUE)
+interpolLagrange(39,2^-8,1-2^-8,1000,'cheby',densite,TRUE)
+interpolLagrange(49,2^-8,1-2^-8,1000,'cheby',densite,TRUE)
+```
+
+On peut bien observer que si on utilise les noeuds de chebyshev, il n'y a pas de phénomène du runge.
+
+##3.3
+
+```{r}
+piecewiseInterpol(1,20,2^-8,1-2^(-8),1000,'equi',densite, TRUE)
+piecewiseInterpol(2,20,2^-8,1-2^(-8),1000,'equi',densite, TRUE)
+piecewiseInterpol(3,20,2^-8,1-2^(-8),1000,'equi',densite, TRUE)
+```
+
+##3.4
+a) on choisit ce $n'$ pour avoir le même nombre de noeuds de faire cette comparaison  
+
+b)
 
 
